@@ -42,6 +42,9 @@ Mouser.
 Power regulation is done on the 1Bitsy board, so there is no need
 for a power regulator on this board.
 
+The 1UP uses 0402 passive components, but I will use 0603 because I am
+more comfortable with them and already have an assortment of parts.
+
 
 ## Compatibility
 
@@ -70,6 +73,8 @@ pins.  I will use through hole headers on 0.1" spacing.
 * PA5/DAC2
 * PB8/I2C1 SDA
 * PB9/I2C1 SCL
+* PA0 for headphone tip sense
+* PA1 for headphone ring sense
 
 There will be solder jumpers to:
 
