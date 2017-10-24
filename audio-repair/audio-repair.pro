@@ -1,4 +1,4 @@
-update=Tuesday, October 24, 2017 'PMt' 12:02:47 PM
+update=Tuesday, October 24, 2017 'PMt' 12:15:32 PM
 version=1
 last_client=kicad
 [pcbnew]
@@ -23,8 +23,6 @@ ModuleOutlineThickness=0.150000000000
 [cvpcb]
 version=1
 NetIExt=net
-[general]
-version=1
 [eeschema]
 version=1
 LibDir=../lib/pkl;../lib
@@ -59,3 +57,5 @@ LibName27=atmel
 LibName28=contrib
 LibName29=valves
 LibName30=audio-repair
+[general]
+version=1
