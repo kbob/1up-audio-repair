@@ -1,0 +1,17 @@
+EESchema-DOCLIB  Version 2.0
+#
+$CMP Audio-Jack-3_2Switches
+D 3-pin audio jack receptable (stereo/TRS connector) with 2 switching contacts
+K audio jack receptable stereo headphones phones TRS connector
+F ~
+$ENDCMP
+#
+$CMP MCP4661-ST
+D 8Bit Dual I2C Digital Potentiometer in QFN16 Package
+$ENDCMP
+#
+$CMP TPA6135A2
+D Stereo Headphone Amplifier With Differential Input and HI-Z Mode
+$ENDCMP
+#
+#End Doc Library

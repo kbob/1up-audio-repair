@@ -37,7 +37,7 @@ halfway or fully inserted.  There are a couple of spare pins on the
 1Bitsy, so firmware can detect when the headphones are present.
 (I wanted the 35RAPC**3**BHN3 which has a single sense pin, but
 that chip is currently (November 2017) out of stock at Digikey and
-Mouser.
+Mouser.)
 
 Power regulation is done on the 1Bitsy board, so there is no need
 for a power regulator on this board.
