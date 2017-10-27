@@ -1,3 +1,6 @@
 [submodule "lib/pkl"]
 	path = lib/pkl
 	url = https://github.com/esden/pretty-kicad-libs.git
+[submodule "lib/1bitsy"]
+	path = lib/1bitsy
+	url = https://github.com/1Bitsy/1bitsy-hardware-lib.git

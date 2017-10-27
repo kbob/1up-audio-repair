@@ -1,0 +1,4 @@
+(fp_lib_table
+  (lib (name 1bitsy)(type KiCad)(uri /Users/kbob/Documents/Code/github/kbob/1up-audio-repair/lib/1bitsy/kicad/1bitsy.pretty)(options "")(descr ""))
+  (lib (name audio-repair)(type KiCad)(uri /Users/kbob/Documents/Code/github/kbob/1up-audio-repair/lib/audio-repair.pretty)(options "")(descr ""))
+)

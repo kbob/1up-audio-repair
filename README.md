@@ -1,81 +1,97 @@
 # Repair a 1UP's headphone jack.
 
-This is a one-off (I hope) daughter board I need to repair a
-[1-UP](https://github.com/1Bitsy/1bitsy-1up) whose headphone jack
-has come off.
+This is a prototype of the
+[1Bitsy-1UP](https://github.com/1Bitsy/1bitsy-1up)'s new audio output
+section.  It is being implemented as a daughter card, but if it works,
+it will be integrated into a future version of the 1Up
 
 
-## The Incidents
+## Objectives
 
-The headphone jack was known to be fragile.  Eventually, mine pulled
-off, and it pulled the pads off the board too.
+The new audio section will have these features.
 
-I epoxied it back into place and carefully soldered wires onto it,
-but it pulled off again almost immediately.
+ * Stereo headphone out or mono speaker out.
 
-So now I am designing a board to replace the whole audio output
-section.  I will tie it onto the through-hole pads on the 1Bitsy,
-and I will figure out a way to solidly affix it to the 1UP chassis.
+* Automatic switching between speaker and headphone when 'phones are
+   plugged in.
 
+* Thumbwheel for volume control.
 
-## The design
+* The volume wheel will directly control audio gain, but will also be
+  readable by software.
 
-The 1-Up v1.0a has its DAC outputs connected, via a digital
-potentiometer, to an amplifier, and the amp drives a headphone jack.
+* Headphone presence will directly control audio signal routing, but
+  will also be readable by software. Software will produce stereo
+  signal when the headphones are active and mono signal when the
+  speaker is active.
 
-The potentiometer is a Microchip MCP4661-103E.  The 1UP uses
-a QFN package, but I'll use a TSSOP to make chip placement easier.
-The potentiometer has an I2C interface.
+* The amplifier's mute function will be controllable by software.
 
-
-The amp is a Texas Instruments TPA6135A2.  It is only available in a
-QFN package.
-
-I've chosen the Switchcraft 35RAPC4BHN3 headphone jack.  It has a
-clear plastic cover and two sense pins to detect when the plug is
-halfway or fully inserted.  There are a couple of spare pins on the
-1Bitsy, so firmware can detect when the headphones are present.
-(I wanted the 35RAPC**3**BHN3 which has a single sense pin, but
-that chip is currently (November 2017) out of stock at Digikey and
-Mouser.)
-
-Power regulation is done on the 1Bitsy board, so there is no need
-for a power regulator on this board.
-
-The 1UP uses 0402 passive components, but I will use 0603 because I am
-more comfortable with them and already have an assortment of parts.
+* The amplifier's shutdown (low power) function will be controllable
+* by software.
 
 
-## Compatibility
+## The Design
 
-Mechanically, this is nothing like the original 1UP audio circuit.
-Ideally, it will be much stornger.
+The audio output will be built around the PAM8019 amplifier from
+Diodes Incorporated.  Headphone outputs will be routed to a 3.5mm
+headphone jack.  Speaker outputs will be routed to a terminal block
+for an off-board speaker.
 
-Electrically, it is the same, with two differences.
+The board will be configurable to take power either from the 1Bitsy's
++3v3 rail or from a separate power connection.
 
-* The original does not have headphone presence pins.
 
-* The original has A/C coupling between the DAC and the digipot,
-  where it does not belong, and does not have A/C coulpling between
-  the digipot and the amp, where it is needed.
+## Considerations
 
-Optionally, I could install a 50K digipot, as the 1Bitsy's DACs are
-only rated to drive loads above 15K.
+This is speculation based on the PAM8019 datasheet.
+
+The 8019's digital input pins, MUTE and ~SD, are 3V compatible.  When
+the 8019 is at 5V, a 3.3V GPIO will control those inputs.
+
+The HP/~SPK input is not 3V compatible when the 8019 is at 5V.  The
+HP/~SPK input will be generated directly from the headphone tip
+switch.  In 5V operation, the 3V GPIO signal will be generated from a
+voltage divider.  In 3V operation, the GPIO signal can be connected
+directly to the tip switch.  (The GPIO pin happens to be an analog
+input, so we could also leave the voltage divider in and read an
+analog value instead of digital.)
+
+The 8019's Volume input needs to have a range of 0 to +5V to give the
+maximum attenuation of -60dB.  But the STM32's analog input can't
+exceed 3.3v.  So a voltage divider is called for.  The problem is that
+the Volume voltage already comes from a 50K potentiometer, which is a
+voltage divider.  Adding another will make the volume control
+nonlinear.
+
+The 8019 has a circuit to detect low power and fade out the audio when
+it happens.  It is supposed to suppress pops on power down.  It will
+require experimentation to find the best resistor values for that.
+
+The 8019 has a "non clip power limit" circuit.  The voltage at the PL
+pin determines the maximum power the amp will deliver.  I will put in
+a header to attach an external potentiometer to test various values of
+PL with whatever speakers we decide to use.
+
 
 ## Interface
 
 The board will connect directly to the 1Bitsy at the following
-pins.  I will use through hole headers on 0.1" spacing.
+pins.  The pin arrangement will match the 1Bitsy's arrangement
+so the boards can be stacked.
 
 * +3V3
 * GND
+* PA0 for headphone tip sense
+* PA1 for volume sense
+* PA2 for Mute control
+* PA3 for ~Shutdown control
 * PA4/DAC1
 * PA5/DAC2
-* PB8/I2C1 SDA
-* PB9/I2C1 SCL
-* PA0 for headphone tip sense
-* PA1 for headphone ring sense
 
-There will be solder jumpers to:
+A solder jumper will connect the amplifier VDD to the 1Bitsy's 3v3
+supply.
 
-* select 0dB or +6dB gain on the amp.
+There will be headers to attach external potentiometers or resistor
+networks to dial in the correct values for the UVP and PL pins.
+

@@ -1,2 +1,4 @@
 *.bak
 *.bck
+audio-repair-cache.*
+audio-repair-rescue.*
