@@ -1,4 +1,9 @@
 *.bak
 *.bck
+*.kicad_pcb-bak
+*.net
+*.xml
 audio-repair-cache.*
 audio-repair-rescue.*
+report.txt
+
