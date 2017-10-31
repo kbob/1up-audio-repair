@@ -27,7 +27,7 @@ NetIExt=net
 version=1
 [eeschema]
 version=1
-LibDir=../lib/pkl;../lib/1bitsy/kicad;../lib
+LibDir=../../lib/pkl;../../lib/1bitsy/kicad;../lib
 [eeschema/libraries]
 LibName1=power
 LibName2=device

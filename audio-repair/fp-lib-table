@@ -1,6 +1,0 @@
-(fp_lib_table
-  (lib (name 1bitsy)(type KiCad)(uri ${KIPRJMOD}/../lib/1bitsy/kicad/1bitsy.pretty)(options "")(descr ""))
-  (lib (name audio-repair)(type KiCad)(uri ${KIPRJMOD}/../lib/audio-repair.pretty)(options "")(descr ""))
-  (lib (name pkl_misc)(type KiCad)(uri ${KIPRJMOD}/../lib/pkl/pkl_misc.pretty)(options "")(descr ""))
-  (lib (name pkl_jumpers)(type KiCad)(uri ${KIPRJMOD}/../lib/pkl/pkl_jumpers.pretty)(options "")(descr ""))
-)
