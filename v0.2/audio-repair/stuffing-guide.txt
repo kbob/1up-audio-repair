@@ -1,0 +1,24 @@
+Audio Repair v0.2
+Stuffing Guide
+
+U1  PAM8019KGR
+
+C1   10µF
+C2  100nF
+C3  100nF
+C4  100nF
+C5  100nF
+C6    1uF
+C7  220nF
+C8  220nF
+C9  220µF
+C10 220µF
+
+R1  100K
+R2  680K
+R3    1M
+R4   -
+R5   -
+R6  100K
+R7   -
+R8   -
