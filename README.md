@@ -95,3 +95,16 @@ supply.
 There will be headers to attach external potentiometers or resistor
 networks to dial in the correct values for the UVP and PL pins.
 
+
+## Misc.
+
+Here is a Maxim app note describing a headphone sense circuit.  Thanks
+to James Hagerman for finding it and to an anonymous Maxim engineer
+for writing it.
+
+https://www.maximintegrated.com/en/app-notes/index.mvp/id/4607
+
+
+## Errata
+
+v0.2 holes are too small for the headphone jack.
