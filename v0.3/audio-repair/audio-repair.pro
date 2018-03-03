@@ -1,4 +1,4 @@
-update=Sunday, October 29, 2017 'AMt' 07:43:42 AM
+update=Saturday, March 03, 2018 'AMt' 06:22:29 AM
 version=1
 last_client=kicad
 [pcbnew]
@@ -61,3 +61,13 @@ LibName29=valves
 LibName30=audio-repair
 LibName31=1bitsy
 LibName32=pkl_misc
+[schematic_editor]
+version=1
+PageLayoutDescrFile=
+PlotDirectoryName=
+SubpartIdSeparator=0
+SubpartFirstId=65
+NetFmtName=
+SpiceForceRefPrefix=0
+SpiceUseNetNumbers=0
+LabSize=60
