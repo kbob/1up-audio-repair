@@ -15,7 +15,20 @@
 
 * Speaker headers changed from screw terminals to 2.54mm headers.
 
+* Board no longer has option to use 1Bitsy's 3v3 power.
+
 ## Board Changes
+
+* Smaller form factor.
+
+* Speaker jacks replaced with solder points.
+
+* Lots of test/patch points removed.
+
+* Mounting holes removed.
+
+* Headphone jack holes enlarged.
+
 
 # V0.2
 
